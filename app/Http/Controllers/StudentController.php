@@ -13,7 +13,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::select('id', 'name', 'phone', 'address')->get();
-        return Inertia::render('Students/Index', [
+        return Inertia::render('Students/Welcome', [
             'data' => $students
         ]);
     }
@@ -23,7 +23,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        
+        return Inertia::render('Students/AddNew');
     }
 
     /**
@@ -31,9 +31,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-       
-         
-        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|numeric',
+            'address' => 'nullable|string|max:255',
+        ]);
+
+        Student::create($validated);
+
+        return redirect()->route('student.index');
     }
 
     /**
@@ -51,7 +57,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-         
+        return Inertia::render('Students/Edit', [
+            'data' => $student->only(['id', 'name', 'phone', 'address'])
+        ]);
     }
 
     /**
@@ -59,7 +67,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|numeric',
+            'address' => 'nullable|string|max:255',
+        ]);
+
+        $student->update($validated);
+
+        return redirect()->route('student.index');
     }
 
     /**

@@ -1,6 +1,6 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
-import DataListView from "@/mycomponents/datalistview"; // <-- Add this import
+import DataListView from "@/pages/Students/datalistview"; // <-- Add this import
 import Navbar from "@/mycomponents/navbar";
 
 const Index = () => {

@@ -1,5 +1,6 @@
 import Navbar from "@/mycomponents/navbar";
-import DataListView from "@/mycomponents/datalistview"; // <-- Add this import
+import DataListView from "@/pages/Students/datalistview"; // <-- Add this import
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Welcome({data }) {
   return (
@@ -8,7 +9,9 @@ export default function Welcome({data }) {
 <div className=" mt-5 w-[95%] ml-auto mr-auto flex itcems-start justify-start  ">
 
  
-  <button className="ml-auto mt-1 border border-[#474747] text-[#e7e7e7] rounded-md hover:bg-[#282828] px-2 py-1">
+  <button className="ml-auto mt-1 border border-[#474747] text-[#e7e7e7] rounded-md hover:bg-[#282828] px-2 py-1"
+   onClick={() => Inertia.visit(route('student.create'))}
+  >
   Add New
   </button>
  </div>

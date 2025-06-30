@@ -41,7 +41,8 @@ const DataListView = ({ data }) => {
                 </button>
                 <button
                   className="mr-1 border border-[#474747] text-[#e7e7e7] rounded-md hover:bg-[#282828] px-2 py-1"
-                  onClick={() => alert('Edit ' + (row.id || idx))}
+                  onClick={() => Inertia.visit(route('student.edit', row.id))}
+
                 >
                   Edit
                 </button>

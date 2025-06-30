@@ -1,4 +1,4 @@
-import DataListView from "@/mycomponents/datalistview";
+import DataListView from "@/pages/Students/datalistview";
 import Navbar from "@/mycomponents/navbar";
 
 export default function DefaultLayout({ data }) {
