@@ -67,7 +67,14 @@ class EnrollmentController extends Controller
      */
     public function edit(Enrollment $enrollment)
     {
-        //
+        $students = Student::select('id', 'name')->get();
+        $batches = Batch::select('id', 'name')->get();
+
+        return inertia('Enrollment/Edit', [
+            'enrollment' => $enrollment->load(['student:id,name', 'batch:id,name']),
+            'students' => $students,
+            'batches' => $batches,
+        ]);
     }
 
     /**
@@ -75,7 +82,16 @@ class EnrollmentController extends Controller
      */
     public function update(Request $request, Enrollment $enrollment)
     {
-        //
+        $validated = $request->validate([
+            'student_id' => 'required|exists:students,id',
+            'batch_id' => 'required|exists:batches,id',
+            'joindate' => 'required|date',
+            'fees' => 'required|numeric|min:0',
+        ]);
+
+        $enrollment->update($validated);
+
+        return redirect()->route('enrollment.index');
     }
 
     /**

@@ -43,7 +43,7 @@ export default function Edit() {
                     <button
                         type="button"
                         disabled={processing}
-                        onClick={() => put(route('student.update', data.id))}
+                        onClick={() => put(route('teacher.update', data.id))}
                         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition disabled:opacity-50"
                     >
                         Update

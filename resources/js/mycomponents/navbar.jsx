@@ -21,7 +21,7 @@ export default function Navbar({navvalue}) {
           <a href="/enrollment" className="hover:text-gray-300">Enrollment</a>
         </li>
         <li className={`${navvalue === "Payment" ? "bg-gray-900 rounded p-2" : "p-2"}`}>
-          <a href="#" className="hover:text-gray-300">Payment</a>
+          <a href="/payment" className="hover:text-gray-300">Payment</a>
         </li>
       </ul>
     </nav>
