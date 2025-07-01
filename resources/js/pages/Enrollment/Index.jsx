@@ -2,7 +2,7 @@ import Navbar from "@/mycomponents/navbar";
 import DataListView from "@/pages/Enrollment/datalistview";
 import { Inertia } from "@inertiajs/inertia";
 
-export default function EnrollmentIndex({ data }) {
+export default function EnrollmentIndex({ data, payments }) {
   return (
     <div className="bg-gray-100 min-h-screen w-full">
       <Navbar navvalue={"Enrollment"} />
@@ -16,7 +16,7 @@ export default function EnrollmentIndex({ data }) {
         </button>
       </div>
       <div className="mt-5 w-[95%] ml-auto mr-auto flex items-start justify-start">
-        <DataListView data={data} />
+        <DataListView data={data} payments={payments} />
       </div>
     </div>
   );

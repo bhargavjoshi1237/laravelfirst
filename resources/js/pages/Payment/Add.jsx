@@ -5,7 +5,7 @@ export default function Add(props) {
     const { data, setData, post } = useForm({
         enrollment_id: '',
         amount: '',
-        datepaid: '', // use datepaid to match DB column
+        datepaid: '',  
     });
 
     return (

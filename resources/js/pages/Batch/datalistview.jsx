@@ -6,7 +6,7 @@ const DataListView = ({ data }) => {
     return <div className="text-gray-500">No data available.</div>;
   }
 
-  // Get table headers from the keys of the first object, skipping created_at and updated_at
+ 
   const headers = Object.keys(data[0]).filter(
     (header) => header !== 'created_at' && header !== 'updated_at'
   );

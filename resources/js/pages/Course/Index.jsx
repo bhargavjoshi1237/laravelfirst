@@ -1,26 +1,24 @@
-import React from "react";
-import { Inertia } from "@inertiajs/inertia";
-import DataListView from "@/pages/Students/datalistview"; // <-- Add this import
 import Navbar from "@/mycomponents/navbar";
+import DataListView from "@/pages/Course/datalistview";
+import { Inertia } from "@inertiajs/inertia";
 
-const Index = () => {
-    const {data} = usePage().props;
+export default function Welcome({data }) {
   return (
-    <div className="bg-[#161616] min-h-screen w-full">
-     <Navbar   />
-<div className=" mt-5 w-[95%] ml-auto mr-auto flex itcems-start justify-start  ">
+    <div className="bg-gray-100 min-h-screen w-full">
+      <Navbar navvalue={"Courses"} />
+      <div className="mt-5 w-[95%] ml-auto mr-auto flex items-start justify-start">
+        <h1 className="text-3xl font-bold text-gray-800">Courses</h1>
 
- 
-  <button className="ml-auto mt-1 border border-[#474747] text-[#e7e7e7] rounded-md hover:bg-[#282828] px-2 py-1">
-  Add New
-  </button>
- </div>
- 
-<div className=" mt-5 w-[95%] ml-auto mr-auto flex itcems-start justify-start  ">
-
-<DataListView data={data}    />    
-</div>
+        <button
+          className="ml-auto mt-1 border border-gray-300 text-gray-800 rounded-md hover:bg-blue-100 px-4 py-2 shadow transition"
+          onClick={() => Inertia.visit(route('course.create'))}
+        >
+          Add New
+        </button>
+      </div>
+      <div className="mt-5 w-[95%] ml-auto mr-auto flex items-start justify-start">
+        <DataListView data={data} />
+      </div>
     </div>
   );
 }
-export default Index;

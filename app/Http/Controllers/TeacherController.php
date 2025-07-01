@@ -7,28 +7,21 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $teachers = Teacher::select('id', 'name', 'phone', 'address')->get();
-        return Inertia::render('Teacher/Welcome', [
+        return Inertia::render('Teacher/Index', [
             'data' => $teachers
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return Inertia::render('Teacher/AddNew');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -42,9 +35,7 @@ class TeacherController extends Controller
         return redirect()->route('teacher.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(Teacher $teacher)
     {
        return Inertia::render('Teacher/View', [
@@ -52,9 +43,7 @@ class TeacherController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+  
     public function edit(Teacher $teacher)
     {
         return Inertia::render('Teacher/Edit', [
@@ -62,9 +51,7 @@ class TeacherController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(Request $request, Teacher $teacher)
     {
         $validated = $request->validate([
@@ -78,9 +65,7 @@ class TeacherController extends Controller
         return redirect()->route('teacher.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(Teacher $teacher)
     {
         $teacher->delete();

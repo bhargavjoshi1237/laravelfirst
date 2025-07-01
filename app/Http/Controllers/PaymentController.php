@@ -8,10 +8,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
+{ 
     public function index()
     {
         $payments = Payment::get();
@@ -21,9 +18,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+     
     public function create()
     {
         $enrollments = Enrollment::with(['student:id,name', 'batch:id,name'])->get();
@@ -33,9 +28,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+     
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -50,9 +43,7 @@ class PaymentController extends Controller
         return redirect()->route('payment.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+     
     public function show(Payment $payment)
     {
         $payment->load([
@@ -74,9 +65,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+     
     public function edit(Payment $payment)
     {
         $enrollments = Enrollment::with(['student:id,name', 'batch:id,name'])->get();
@@ -86,9 +75,7 @@ class PaymentController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+     
     public function update(Request $request, Payment $payment)
     {
         $validated = $request->validate([
@@ -101,9 +88,7 @@ class PaymentController extends Controller
         return redirect()->route('payment.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+     
     public function destroy(Payment $payment)
     {
         $payment->delete();

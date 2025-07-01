@@ -8,12 +8,10 @@ use App\Models\Course;
 
 class BatchController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        // $batches = Batch::with('course')->get();
+         
         $batches = Batch::get();
 
         return Inertia::render('Batch/Index', [
@@ -21,9 +19,7 @@ class BatchController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+     
     public function create()
     {
         
@@ -32,9 +28,7 @@ class BatchController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -48,9 +42,7 @@ class BatchController extends Controller
         return redirect()->route('batch.index')->with('success', 'Batch created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Batch $batch)
     {
         $batch->load('course');
@@ -60,9 +52,7 @@ class BatchController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+     
     public function edit(Batch $batch)
     {
         $courses = Course::all();
@@ -72,9 +62,7 @@ class BatchController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Batch $batch)
     {
         $validated = $request->validate([
@@ -88,9 +76,7 @@ class BatchController extends Controller
         return redirect()->route('batch.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Batch $batch)
     {
         $batch->delete();

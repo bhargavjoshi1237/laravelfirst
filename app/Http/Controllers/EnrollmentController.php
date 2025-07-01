@@ -5,29 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Enrollment;
 use App\Models\Student;
 use App\Models\Batch;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+     
     public function index()
     {
         $enrollments = Enrollment::with(['student:id,name', 'batch:id,name'])->get();
+        $payments = Payment::select('id', 'enrollment_id')->get();  
 
         return inertia('Enrollment/Index', [
             'data' => $enrollments,
+            'payments' => $payments,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+     
     public function create()
     {
         $students = Student::select('id', 'name')->get();
         $batches = Batch::select('id', 'name')->get();
+        
 
         return inertia('Enrollment/AddNew', [
             'students' => $students,
@@ -35,9 +35,7 @@ class EnrollmentController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+     
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -52,9 +50,7 @@ class EnrollmentController extends Controller
         return redirect()->route('enrollment.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Enrollment $enrollment)
     {
         return inertia('Enrollment/View', [
@@ -62,9 +58,7 @@ class EnrollmentController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Enrollment $enrollment)
     {
         $students = Student::select('id', 'name')->get();
