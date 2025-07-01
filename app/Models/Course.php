@@ -8,4 +8,9 @@ class Course extends Model
 {
     protected $guarded = [];
     protected $fillable = ['name', 'syllabus', 'duration'];
+
+    public function batches()
+    {
+        return $this->hasMany(Batch::class);
+    }
 }

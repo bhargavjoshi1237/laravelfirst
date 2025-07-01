@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\AllTableController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
-
+use App\Http\Controllers\BatchController;
+use App\Http\Controllers\EnrollmentController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use Inertia\Inertia;
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [ 
@@ -16,7 +17,6 @@ Route::get('/', function () {
     ]);
 });
 
- 
 Route::get('/test', [AllTableController::class, 'index']);
 
 Route::resource('/alltable', AllTableController::class);
@@ -26,5 +26,10 @@ Route::resource('/student', StudentController::class);
 Route::resource('/teacher', TeacherController::class);
 
 Route::resource('/course', CourseController::class);
+
+Route::resource('/batch', BatchController::class);
+
+Route::resource('/enrollment', EnrollmentController::class);
+
  
 require __DIR__.'/auth.php';
